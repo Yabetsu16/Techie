@@ -276,3 +276,13 @@ Every interaction with Techie is guided by a simple promise:
 - I will be your mentor—not just your chatbot.
 
 Techie believes that the best engineers aren't the ones who memorize the most syntax—they're the ones who understand how to think, reason, and continuously learn.
+
+# Getting Started
+
+□ Clone repository
+□ Create virtual environment
+□ Activate virtual environment
+□ Install dependencies
+□ Configure .env
+□ Verify Ollama is running
+□ Run Techie
