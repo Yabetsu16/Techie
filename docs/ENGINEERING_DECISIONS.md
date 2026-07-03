@@ -290,3 +290,58 @@ Single-purpose services are easier to understand, test, and extend.
 ### Outcome
 
 Future features should be implemented by introducing new services rather than expanding existing ones beyond their core responsibility.
+
+---
+
+## ED-008 — Release Stable Milestones
+
+**Status:** Accepted
+
+### Context
+
+As Techie grows, multiple features will be developed across different sprints. Without clear milestones, it becomes difficult to identify stable versions or revert to known working states.
+
+### Decision
+
+Every completed sprint that results in a working application will be released as a versioned milestone.
+
+Each release includes:
+
+- Updated CHANGELOG
+- Version update
+- Git commit
+- Git tag
+
+### Rationale
+
+This creates a reliable project history, simplifies debugging, and demonstrates professional software engineering practices.
+
+### Outcome
+
+Techie will evolve through incremental, stable releases rather than large, infrequent updates.
+
+---
+
+## ED-009 — Store Prompts Outside the Source Code
+
+**Status:** Accepted
+
+### Context
+
+Prompt engineering is a core part of Techie's behavior. Embedding prompts directly into Python files mixes content with application logic and makes prompt iteration more difficult.
+
+### Decision
+
+All long-form prompts will be stored as Markdown files and loaded through a dedicated `PromptService`.
+
+### Rationale
+
+- Separates content from code.
+- Simplifies prompt iteration.
+- Improves readability.
+- Enables future prompt versioning.
+- Keeps `LLMService` focused solely on model communication.
+
+### Consequences
+
+`LLMService` will never contain large prompt strings. Prompt loading is delegated to `PromptService`.
