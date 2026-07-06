@@ -79,3 +79,37 @@ Techie successfully completed its first end-to-end conversation using a locally 
 - Successfully connected to Ollama Local
 - Successfully generated the first AI response
 - Established the baseline evaluation for Techie's teaching quality
+
+---
+
+## [0.3.0] - Sprint 3
+
+### Added
+
+- PromptService
+- External system prompt loading
+- Techie's teaching identity
+- Teaching philosophy
+- Teaching style
+- Communication guidelines
+- Sprint evaluation framework
+- Sprint evaluation logs
+- Sprint retrospective
+- Ruff configuration
+- VS Code workspace settings
+
+### Changed
+
+- Refactored `LLMService`
+- Extracted message building into a dedicated method
+- Extracted response generation into a dedicated method
+- Improved project architecture for future conversation memory
+- Improved project documentation
+
+### Evaluated
+
+Completed six structured teaching evaluations.
+
+Overall Score:
+
+159 / 180 (88.3%)
