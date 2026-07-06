@@ -20,7 +20,7 @@ Design Goals:
 """
 
 from app.services.conversation_service import ConversationService
-from app.services.llm_service import LLMService
+from app.protocols.llm import LLMProtocol
 
 
 class TutorService:
@@ -30,7 +30,7 @@ class TutorService:
     """
 
     def __init__(
-        self, llm_service: LLMService, conversation_service: ConversationService
+        self, llm_service: LLMProtocol, conversation_service: ConversationService
     ) -> None:
         """Initialize the tutor service."""
         self.llm_service = llm_service
