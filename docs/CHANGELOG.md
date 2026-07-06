@@ -113,3 +113,47 @@ Completed six structured teaching evaluations.
 Overall Score:
 
 159 / 180 (88.3%)
+
+---
+
+## [0.4.0] - Conversation Memory
+
+### Added
+
+- Introduced `ConversationService` to manage in-memory conversation history.
+- Added support for storing:
+  - System messages
+  - User messages
+  - Assistant messages
+- Implemented conversation clearing while preserving the system prompt.
+- Added reusable message creation helper.
+- Added `TutorService` to orchestrate conversations between the learner, conversation history, and language model.
+- Refactored `LLMService` to accept the complete conversation history instead of a single user message.
+- Moved system prompt ownership from `LLMService` to `ConversationService`.
+- Updated `main.py` to initialize application services using dependency injection.
+
+### Testing
+
+- Added unit tests for `ConversationService`.
+- Added pytest fixtures for cleaner test setup.
+- Verified:
+  - Empty conversation initialization
+  - User message storage
+  - Assistant message storage
+  - Message ordering
+  - Conversation clearing
+  - Defensive copying of conversation history
+
+### Debugging
+
+- Investigated multi-turn conversation failures.
+- Verified that conversation history was correctly passed to the LLM.
+- Identified a compatibility issue with `qwen3.5:9b` through Ollama's OpenAI-compatible API, where multi-turn conversations occasionally returned empty responses.
+- Confirmed that `llama3.2` correctly supports conversation memory with the current architecture.
+
+### Architecture Improvements
+
+- Strengthened separation of responsibilities:
+  - `ConversationService` owns conversation history.
+  - `TutorService` coordinates application flow.
+  - `LLMService` focuses solely on communicating with the language model.

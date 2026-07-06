@@ -286,3 +286,19 @@ Techie believes that the best engineers aren't the ones who memorize the most sy
 □ Configure .env
 □ Verify Ollama is running
 □ Run Techie
+
+## Local Model Compatibility
+
+Tested Models
+
+✅ llama3.2
+
+- Conversation memory works
+- Multi-turn chat works
+- System prompt works
+
+⚠ qwen3.5:9b
+
+- Single-turn responses work
+- Multi-turn conversations occasionally return empty completions
+- Appears to be a model/runtime compatibility issue rather than an application bug

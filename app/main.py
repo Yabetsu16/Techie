@@ -22,23 +22,29 @@ Future Interfaces:
     - Desktop UI
 """
 
+from app.services.tutor_service import TutorService
+from app.services.conversation_service import ConversationService
 from app.services.llm_service import LLMService
 from app.constants import EXIT_COMMANDS, WELCOME_MESSAGE
+from app.services.prompt_service import PromptService
 
+prompt_service = PromptService()
 
-def get_llm_service() -> LLMService:
-    """Return the application's configured LLM service."""
-    return LLMService()
+system_prompt = prompt_service.load_system_prompt()
+
+conversation_service = ConversationService(system_prompt)
+
+llm_service = LLMService()
+
+tutor_service = TutorService(llm_service, conversation_service)
 
 
 def main() -> None:
     """Start Techie's interactive command-line REPL."""
 
-    llm = get_llm_service()
-
     print(WELCOME_MESSAGE)
-    print(f"Provider: {llm.provider}")
-    print(f"Model: {llm.model}")
+    print(f"Provider: {llm_service.provider}")
+    print(f"Model: {llm_service.model}")
 
     while True:
         user_input = input("\nYou: ").strip()
@@ -50,7 +56,7 @@ def main() -> None:
             print("\nTechie: Happy learning! 👋")
             break
 
-        response = llm.chat(user_input)
+        response = tutor_service.chat(user_input)
 
         print(f"\nTechie: {response}")
 
